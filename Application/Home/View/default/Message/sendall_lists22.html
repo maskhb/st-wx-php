@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="{:C('WEB_SITE_KEYWORD')}" name="keywords"/>
+    <meta content="{:C('WEB_SITE_DESCRIPTION')}" name="description"/>
+    <link rel="shortcut icon" href="{:SITE_URL}/favicon.ico">
+    <title><php>echo empty($page_title) ? C('WEB_SITE_TITLE') : $page_title;</php></title>
+    <link href="__STATIC__/bootstrap/css/bootstrap.min.css?v={:SITE_VERSION}" rel="stylesheet">
+    <!--<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>-->
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+<button href="" class="btn" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." >测试</button>
+</body>
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+</html>

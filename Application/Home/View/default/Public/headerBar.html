@@ -1,0 +1,15 @@
+<div class="headerBar">
+    <assign name="showindex" value="[showindex]" />
+    <assign name="showback" value="[showback]" />
+    <header>
+        <neq name="showback" value="0">
+            <a class="backBtn" href="[backurl]">
+                [backtxt]
+            </a>
+        </neq>
+        <div class="title">[title]</div>
+        <eq name="showindex" value="1">
+            <a class="goHomeBtn" href="{:addons_url('HomeDec://UserCenter/index')}">个人中心</a>
+        </eq>
+    </header>
+</div>

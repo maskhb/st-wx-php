@@ -1,0 +1,31 @@
+2017-07-28 11:01:23 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:01:27 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:01:29 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:04:17 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:04:55 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:04:56 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:05:39 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:06:51 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-28 11:11:21 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-31 08:49:33 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-31 08:49:45 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-31 08:50:22 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-31 08:50:23 Error Info : curl falied. Error Info: Could not resolve host: dev.dr-goods-api.hd
+2017-07-31 16:50:11 Error Info : curl falied. Error Info: Failed to connect to dev.dr-price-api.hd port 80: Timed out
+2017-07-31 16:50:34 Error Info : curl falied. Error Info: Failed to connect to dev.region-api.hd port 80: Timed out
+2017-07-31 16:50:55 Error Info : curl falied. Error Info: Failed to connect to dev.dr-price-api.hd port 80: Timed out
+2017-07-31 16:51:18 Error Info : curl falied. Error Info: Failed to connect to dev.region-api.hd port 80: Timed out
+2017-07-31 16:51:43 Error Info : curl falied. Error Info: Failed to connect to dev.region-api.hd port 80: Timed out
+2017-07-31 16:58:49 Error Info : curl falied. Error Info: Failed to connect to dev.region-api.hd port 80: Timed out
+2017-07-31 16:59:52 Error Info : curl falied. Error Info: Failed to connect to dev.region-api.hd port 80: Timed out
+2017-08-01 10:29:33 Error Info : curl falied. Error Info: Failed to connect to dev.dr-goods-api.hd port 80: Timed out
+2017-08-01 10:29:54 Error Info : curl falied. Error Info: Failed to connect to dev.dr-goods-api.hd port 80: Timed out
+2017-08-01 10:30:15 Error Info : curl falied. Error Info: Failed to connect to dev.dr-goods-api.hd port 80: Timed out
+2017-08-01 10:30:37 Error Info : curl falied. Error Info: Failed to connect to dev.dr-goods-api.hd port 80: Timed out
+2017-08-01 10:30:58 Error Info : curl falied. Error Info: Failed to connect to dev.dr-goods-api.hd port 80: Timed out
+2017-08-01 10:31:20 Error Info : curl falied. Error Info: Failed to connect to dev.dr-cart-api.hd port 80: Timed out
+2017-08-01 10:31:41 Error Info : curl falied. Error Info: Failed to connect to dev.dr-cart-api.hd port 80: Timed out
+2017-08-01 10:32:02 Error Info : curl falied. Error Info: Failed to connect to dev.dr-cart-api.hd port 80: Timed out
+2017-08-01 16:55:59 Error Info : curl falied. Error Info: Failed to connect to dev.dr-cart-api.hd port 80: Timed out
+2017-08-01 16:56:20 Error Info : curl falied. Error Info: Failed to connect to dev.dr-price-api.hd port 80: Timed out
+2018-05-16 10:41:23 Error Info : curl falied. Error Info: Could not resolve host: cgi-bin

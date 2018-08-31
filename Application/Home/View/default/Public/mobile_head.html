@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>[title]</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta content="width=375, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <link rel="apple-touch-icon" href="/logo.png"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/animate.min.css?v={:SITE_VERSION}" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/mobile_module.css?v={:SITE_VERSION}" media="all">
+    <script type="text/javascript">
+		//静态变量
+		var SITE_URL = "{:SITE_URL}";
+		var IMG_PATH = "__IMG__";
+		var STATIC_PATH = "__STATIC__";
+		var WX_APPID = "{$jsapiParams.appId}";
+		var	WXJS_TIMESTAMP='{$jsapiParams.timestamp}'; 
+		var NONCESTR= '{$jsapiParams.nonceStr}'; 
+		var SIGNATURE= '{$jsapiParams.signature}';
+	</script>
+    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="minify.php?f=__JS__/prefixfree.min.js,__JS__/m/dialog_ht.js,__JS__/m/flipsnap.min.js,__JS__/m/mobile_module.js&v={:SITE_VERSION}"></script>
+    <script src="__JS__/mobile_common.js"></script>
+    <script type="text/javascript">
+        var phoneWidth =  parseInt(window.screen.width);
+        var phoneScale = phoneWidth/375;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                document.write('<meta name="viewport" content="width=375,user-scalable=no, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+//                document.write('<meta name="viewport" content="width=375,user-scalable=no, target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=375,user-scalable=no, target-densitydpi=device-dpi">');
+            }
+        }else {
+//            document.write('<meta name="viewport" content="width=375, user-scalable=no, target-densitydpi=device-dpi">');
+            document.write('<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+
+
+
+        //iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 devework.com
+        //stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari
+        if(("standalone" in window.navigator) && window.navigator.standalone){
+            var noddy, remotes = false;
+            document.addEventListener('click', function(event) {
+                noddy = event.target;
+                while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {
+                    noddy = noddy.parentNode;
+                }
+                if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes))
+                {
+                    event.preventDefault();
+                    document.location.href = noddy.href;
+                }
+            },false);
+        }
+
+    </script>
+</head>

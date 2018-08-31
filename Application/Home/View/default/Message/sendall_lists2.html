@@ -1,0 +1,172 @@
+<extend name="Base/common" />
+<block name="body">
+    <link href="__STATIC__/bootstrap/css/popover.css?v={:SITE_VERSION}" rel="stylesheet">
+    <div class="span9 page_message">
+        <section id="contents">
+            <include file="Addons/_nav" />
+
+            <!-- 数据列表 -->
+            <div class="data-table">
+
+                <div class="table-striped">
+                    <table class="message_list" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>消息类型</th>
+                            <th>发送状态</th>
+                            <th>发送设置</th>
+                        </tr>
+                        </thead>
+                        <!-- 列表 -->
+                        <tbody>
+                        <volist name="list_data" id="vo">
+                            <tr>
+                                <td width="55%" class="user">
+                                    <notempty name="vo.news_list">
+                                        <ul>
+                                            <li class="appmsg_li" style="width: 308px;    border: 1px solid #ddd;    float: left;    margin: 9px;    list-style: none;    position: relative;">
+                                                <div class="appmsg_item">
+                                                    <div class="main_img">
+                                                        <img src="{$vo.news_list.0.cover_id|get_cover_url}"/>
+                                                        <h6>{$vo.news_list.0.title}</h6>
+                                                    </div>
+
+<!--                                                    <p class="desc ellipsis">{$vo.news_list.0.intro}</p>-->
+                                                </div>
+                                                <volist name="vo.news_list" id="dd" offset="1">
+                                                    <div class="appmsg_sub_item">
+                                                        <p class="title ellipsis">{$dd.title}</p>
+                                                        <div class="main_img">
+                                                            <img src="{$dd.cover_id|get_cover_url}"/>
+                                                        </div>
+                                                    </div>
+                                                </volist>
+                                            </li>
+                                        </ul>
+                                        <else />
+                                        <notempty name="vo[image_url]">
+                                            <img width="50" src="{$vo.image_url}"/>
+                                            <else/>
+                                            <eq name='vo.msgType' value='voice'>
+                                                <img width='50' src='__IMG__/icon_sound.png'>
+                                                <else />
+                                                <img width="50" src="__IMG__/default.png"/>
+                                            </eq>
+
+                                        </notempty>
+                                        <div class="u_info">
+                                            <p class="msg">{$vo.Content}</p>
+                                        </div>
+                                    </notempty>
+
+                                </td>
+                                <td width="20%" valign="top">
+                                    <span data-toggle="popover" data-container="body" data-placement="bottom" data-content="<p>成功人数： {$vo.success_count}人<br>失败人数：{$vo.fail_count}人</p>" >发送成功</span>
+                                </td>
+
+                                <td width="25%" valign="top">
+                                    <span>{$vo.cTime|time_format}</span><br><br>
+                                    <span <eq name="vo.all_projects" value="0"> data-toggle="popover" data-container="body"  data-placement="bottom" data-content="<div style='word-break: break-word;'><div>发送项目数：{$vo.count_projects} </div> <div>{$vo.projects}</div></div>" </eq> >{$vo.send_tip}</span>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="page"> {$_page|default=''} </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        function set_status(id, field, val){
+            $.post("{:U('set_status')}",{id:id,field:field,val:val},function(){
+                location.reload();
+            })
+        }
+        $(function(){
+            $(function () {
+                $('[data-toggle="popover"]').popover({
+                    html : true,
+                    trigger : 'hover ',
+                    delay :  { "show": 0, "hide": 1000 }
+                })
+            })
+
+            //初始化上传图片插件
+            initUploadImg({width:308,height:200});
+            $('.uploadify-button').css('background-color','#ccc');
+            $("select[name='send_time']").change(function(){
+                location.href="{$searchUrl}&send_time="+$(this).val();
+            });
+
+        })
+        $('.msg_tab .txt').click(function(){
+            //纯文本
+            $(this).addClass('current').siblings().removeClass('current');
+            $('input[name="msg_type"]').val('text');
+            $('textarea[name="content"]').show().siblings().hide();
+            $('#getText').show();
+
+        })
+        $('.msg_tab .appmsg').click(function(){
+            //图文消息
+            $(this).addClass('current').siblings().removeClass('current');
+            $('input[name="msg_type"]').val('appmsg');
+            $('#appmsg_area').show().siblings().hide();
+            $('#getText').hide();
+        })
+        $('.msg_tab .image').click(function(){
+            //图片消息
+            $(this).addClass('current').siblings().removeClass('current');
+            $('input[name="msg_type"]').val('image');
+            $('.msg_image').show().siblings().hide();
+            $('#getText').hide();
+        })
+        $('.appmsg_area .delete').click(function(){
+            $('.appmsg_wrap').html('').hide();
+            $('.select_appmsg').show();
+            $('.appmsg_area .delete').hide();
+            $('input[name="appmsg_id"]').val(0);
+        })
+        function selectAppMsgCallback(_this){
+            $('.appmsg_wrap').html($(_this).html()).show();
+            $('.select_appmsg').hide();
+            $('.appmsg_area .delete').show();
+            $('input[name="appmsg_id"]').val($(_this).data('group_id'));
+            $.Dialog.close();
+        }
+
+        function set_material(id){
+            var url="{:U('set_meterial')}";
+            $.post(url,{'id':id},function(data){
+                location.reload();
+            });
+        }
+        function selectText(){
+            $.WeiPHP.openSelectUsers("{:U('Material/text_lists')}",1,function(data){
+                if(data && data.length>0){
+                    for(var i=0;i<data.length;i++){
+                        var id=data[i]['id'];
+                        if(id){
+                            $.post("{:U('Material/get_content_by_id')}",{'id':id},function(d){
+                                $('#message_text').text(d);
+                            })
+                        }
+                    }
+                }
+            })
+        }
+        function do_again(diff){
+            var url="{:U(sendOldMessage)}";
+            $.post(url,{'diff':diff},function(d){
+                alert('有'+d+ '条消息发送成功！');
+
+            });
+        }
+    </script>
+</block>
+
+
